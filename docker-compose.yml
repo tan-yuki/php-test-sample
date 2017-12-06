@@ -1,0 +1,13 @@
+version: '3'
+services:
+    composer-install:
+        build: .
+        volumes:
+            - '.:/work'
+        command: composer install
+    phpunit:
+        image: php:7.2
+        volumes:
+            - '.:/work'
+        working_dir: /work
+        command: ./vendor/bin/phpunit
